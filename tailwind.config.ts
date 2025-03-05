@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,16 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom colors for our cybersecurity theme
+				cyber: {
+					'blue': '#0A84FF',
+					'blue-dark': '#0066CC',
+					'blue-light': '#5AC8FA',
+					'gray-dark': '#1C1C1E',
+					'gray': '#3A3A3C',
+					'gray-light': '#F2F2F7',
+					'alert': '#FF453A',
 				}
 			},
 			borderRadius: {
@@ -70,25 +81,53 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
-				}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				'fade-in-up': {
+					'0%': { opacity: '0', transform: 'translateY(20px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'pulse-slow': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.7' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'rotate-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
+				},
+				'gradient-flow': {
+					'0%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' },
+					'100%': { backgroundPosition: '0% 50%' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.7s ease-out',
+				'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
+				'pulse-slow': 'pulse-slow 3s ease-in-out infinite',
+				'float': 'float 6s ease-in-out infinite',
+				'rotate-slow': 'rotate-slow 10s linear infinite',
+				'gradient-flow': 'gradient-flow 5s ease infinite',
+			},
+			backgroundImage: {
+				'cyber-gradient': 'linear-gradient(135deg, #0A84FF 0%, #5AC8FA 100%)',
+				'cyber-radial': 'radial-gradient(circle, rgba(90,200,250,0.1) 0%, rgba(10,132,255,0.05) 100%)',
+				'hero-pattern': "url('/src/assets/grid-pattern.svg')",
 			}
 		}
 	},
