@@ -14,19 +14,8 @@ const HeroSection = () => {
     if (!ctx) return;
 
     let animationFrameId: number;
-    let particles: Particle[] = [];
-    let connections: Connection[] = [];
     
-    // Resize handler
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = Math.min(800, window.innerHeight * 0.9);
-      initParticles();
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
+    // Define Particle class before it's used
     class Particle {
       x: number;
       y: number;
@@ -65,6 +54,7 @@ const HeroSection = () => {
       }
     }
 
+    // Define Connection class before it's used
     class Connection {
       from: Particle;
       to: Particle;
@@ -98,6 +88,19 @@ const HeroSection = () => {
         ctx.stroke();
       }
     }
+    
+    let particles: Particle[] = [];
+    let connections: Connection[] = [];
+    
+    // Resize handler
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = Math.min(800, window.innerHeight * 0.9);
+      initParticles();
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
 
     function initParticles() {
       particles = [];
