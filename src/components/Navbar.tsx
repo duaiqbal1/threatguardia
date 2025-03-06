@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Link, useNavigate } from 'react-router-dom';
@@ -23,13 +22,7 @@ const Navbar = () => {
   }, []);
 
   const handleLogin = () => {
-    toast({
-      title: "Login functionality",
-      description: "This would typically redirect to a login page. Implement actual authentication for production.",
-      duration: 3000,
-    });
-    // This would navigate to a login page in a real app
-    // navigate('/login');
+    navigate('/login');
   };
 
   const handleGetStarted = () => {
@@ -38,7 +31,6 @@ const Navbar = () => {
       description: "This would typically start the sign-up process. Implement actual registration for production.",
       duration: 3000,
     });
-    // Navigate to pricing page to show available plans
     navigate('/pricing');
   };
 
