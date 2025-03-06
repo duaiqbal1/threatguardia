@@ -1,13 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const { toast } = useToast();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +21,26 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleLogin = () => {
+    toast({
+      title: "Login functionality",
+      description: "This would typically redirect to a login page. Implement actual authentication for production.",
+      duration: 3000,
+    });
+    // This would navigate to a login page in a real app
+    // navigate('/login');
+  };
+
+  const handleGetStarted = () => {
+    toast({
+      title: "Get Started",
+      description: "This would typically start the sign-up process. Implement actual registration for production.",
+      duration: 3000,
+    });
+    // Navigate to pricing page to show available plans
+    navigate('/pricing');
+  };
 
   return (
     <header
@@ -66,11 +89,13 @@ const Navbar = () => {
           <Button
             variant="ghost"
             className="text-sm font-medium"
+            onClick={handleLogin}
           >
             Log In
           </Button>
           <Button
             className="bg-cyber-blue hover:bg-cyber-blue-dark text-white transition-colors shadow-md hover:shadow-lg"
+            onClick={handleGetStarted}
           >
             Get Started
           </Button>
@@ -131,8 +156,23 @@ const Navbar = () => {
         <div className="pt-4 pb-3 border-t border-gray-200 dark:border-gray-700">
           <div className="flex items-center px-5">
             <Button
+              variant="ghost"
+              className="w-full mb-3 text-gray-700 dark:text-gray-200 hover:text-cyber-blue hover:bg-gray-50 dark:hover:bg-gray-800"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                handleLogin();
+              }}
+            >
+              Log In
+            </Button>
+          </div>
+          <div className="flex items-center px-5">
+            <Button
               className="w-full bg-cyber-blue hover:bg-cyber-blue-dark text-white transition-colors shadow-md"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                handleGetStarted();
+              }}
             >
               Get Started
             </Button>
